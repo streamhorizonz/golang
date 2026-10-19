@@ -1,0 +1,27 @@
+#+TITLE: Tugas Pekan 02 Golang
+#+AUTHOR: Bro
+#+DATE: Monday, 19 October 2026
+#+DESCRIPTION: Deskripsi singkat
+#+LANGUAGE: id
+#+OPTIONS: toc:nil num:nil
+
+
+
+Bismillah, berikut saya lampirkan tugas pekan kedua sebagai wasilah agar teman-teman sekalian dapat memahami penggunaan/implementasi dari materi yang sudah kita pelajari di pekan kedua
+————
+
+Deskripsi Studi Kasus:
+Anda diberikan program awal berupa minitournament.go yang mencatat hasil pertandingan secara langsung (prosedural monolitik). Program tersebut memiliki kelemahan: riwayat pertandingan tidak disimpan dan belum ada sistem pencatatan poin klasemen untuk masing-masing tim
+Instruksi Pengerjaan: Lakukan refactoring (perombakan kode) pada program tersebut dengan menerapkan materi Pertemuan 2, dengan ketentuan wajib sebagai berikut:
+Gunakan Array ([N]string):
+- Buatlah sebuah Array dengan ukuran tetap (misalnya sesuai jumlah pertandingan) untuk menyimpan daftar nama stadion venue pertandingan yang diinputkan di awal, atau di-hardcode/input sebelum perulangan pertandingan dimulai.
+- Tampilkan nama stadion venue pada setiap rincian pertandingan.
+Gunakan Slice ([]string):
+- Tampung seluruh hasil teks ringkasan setiap pertandingan ke dalam sebuah slice riwayat, lalu tampilkan kembali daftar riwayat tersebut di akhir program menggunakan perulangan for range.
+Gunakan Map (map[string]int):
+- Buatlah sistem pencatatan poin otomatis untuk klasemen tim menggunakan Map (Kunci: Nama Tim, Nilai: Total Poin).
+- Ketentuan poin: Menang = 3 poin, Seri = 1 poin, Kalah = 0 poin. Tampilkan klasemen akhir di bagian ringkasan.
+Contoh Tampilan terlampir
+
+Tugas dapat dikumpulkan dengan mengirimkan file go ke channel tugas ataupun dengan menggunakan URL GIT (github dengan akses publik).
+

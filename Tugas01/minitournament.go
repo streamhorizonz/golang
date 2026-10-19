@@ -1,0 +1,98 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+
+	const jumlahPertandingan = 5
+
+	var totalGol int
+	var jumlahSeri int
+
+	fmt.Println("===================================")
+	fmt.Println("     SISTEM TURNAMEN MINI")
+	fmt.Println("===================================")
+
+	for i := 1; i <= jumlahPertandingan; i++ {
+
+		fmt.Println()
+		fmt.Printf("=== Pertandingan Ke-%d ===\n", i)
+
+		var homeTeam string
+		var awayTeam string
+
+		fmt.Print("Nama Tim Home : ")
+		fmt.Scan(&homeTeam)
+
+		fmt.Print("Nama Tim Away : ")
+		fmt.Scan(&awayTeam)
+
+		var homeGoal int
+		var awayGoal int
+
+		// Validasi gol home
+		for {
+			fmt.Print("Gol ", homeTeam, " : ")
+			fmt.Scan(&homeGoal)
+
+			if homeGoal >= 0 {
+				break
+			}
+
+			fmt.Println("ERROR: Gol tidak boleh negatif!")
+		}
+
+		// Validasi gol away
+		for {
+			fmt.Print("Gol ", awayTeam, " : ")
+			fmt.Scan(&awayGoal)
+
+			if awayGoal >= 0 {
+				break
+			}
+
+			fmt.Println("ERROR: Gol tidak boleh negatif!")
+		}
+
+		fmt.Println()
+		fmt.Println("Hasil Pertandingan")
+
+		fmt.Printf(
+			"%s %d - %d %s\n",
+			homeTeam,
+			homeGoal,
+			awayGoal,
+			awayTeam,
+		)
+
+		if homeGoal > awayGoal {
+
+			fmt.Println("Pemenang :", homeTeam)
+
+		} else if awayGoal > homeGoal {
+
+			fmt.Println("Pemenang :", awayTeam)
+
+		} else {
+
+			fmt.Println("Hasil : Seri")
+			jumlahSeri++
+		}
+
+		totalGol += homeGoal + awayGoal
+	}
+
+	rataRataGol := float64(totalGol) / float64(jumlahPertandingan)
+
+	fmt.Println()
+	fmt.Println("===================================")
+	fmt.Println("     RINGKASAN TURNAMEN")
+	fmt.Println("===================================")
+
+	fmt.Println("Jumlah Pertandingan :", jumlahPertandingan)
+	fmt.Println("Total Gol           :", totalGol)
+	fmt.Println("Jumlah Seri         :", jumlahSeri)
+	fmt.Printf("Rata-rata Gol       : %.2f\n", rataRataGol)
+}
