@@ -10,6 +10,16 @@ func main() {
 
 	var totalGol int
 	var jumlahSeri int
+	var venue string
+	var historyPertandingan []string
+
+	//01. Array venue Pertandingan
+	venues := [3]string {
+		"Stadion Gelora Bung Karno",
+		"Stadion Jalak Harupat",
+		"Stadion Manahan",
+	}
+
 
 	fmt.Println("===================================")
 	fmt.Println("     SISTEM TURNAMEN MINI")
@@ -20,6 +30,9 @@ func main() {
 		fmt.Println()
 		fmt.Printf("=== Pertandingan Ke-%d ===\n", i)
 
+
+		venue = venues[(i-1)%len(venues)]
+
 		var homeTeam string
 		var awayTeam string
 
@@ -28,6 +41,7 @@ func main() {
 
 		fmt.Print("Nama Tim Away : ")
 		fmt.Scan(&awayTeam)
+		fmt.Println("Lokasi Pertandingan :", venue)
 
 		var homeGoal int
 		var awayGoal int
@@ -67,6 +81,9 @@ func main() {
 			awayTeam,
 		)
 
+		hasil := fmt.Sprintf("%s %d - %d %s @ %s", homeTeam, homeGoal, awayGoal, awayTeam, venue)
+		historyPertandingan = append(historyPertandingan, hasil)
+
 		if homeGoal > awayGoal {
 
 			fmt.Println("Pemenang :", homeTeam)
@@ -91,8 +108,13 @@ func main() {
 	fmt.Println("     RINGKASAN TURNAMEN")
 	fmt.Println("===================================")
 
-	fmt.Println("Jumlah Pertandingan :", jumlahPertandingan)
-	fmt.Println("Total Gol           :", totalGol)
-	fmt.Println("Jumlah Seri         :", jumlahSeri)
+	// fmt.Println("Jumlah Pertandingan :", jumlahPertandingan)
+	// fmt.Println("Total Gol           :", totalGol)
+	// fmt.Println("Jumlah Seri         :", jumlahSeri)
 	fmt.Printf("Rata-rata Gol       : %.2f\n", rataRataGol)
+
+	for i, history := range historyPertandingan{
+		fmt.Print("%s %d \n", i+1, history)
+
+	}
 }
