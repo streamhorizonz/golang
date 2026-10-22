@@ -6,7 +6,7 @@ import (
 
 func main() {
 
-	const jumlahPertandingan = 5
+	const jumlahPertandingan = 3
 
 	var totalGol int
 	var jumlahSeri int
@@ -20,6 +20,8 @@ func main() {
 		"Stadion Manahan",
 	}
 
+	// 02. Inisialisasi map literal kosong
+	klasemen := map[string]int{}
 
 	fmt.Println("===================================")
 	fmt.Println("     SISTEM TURNAMEN MINI")
@@ -81,8 +83,23 @@ func main() {
 			awayTeam,
 		)
 
-		hasil := fmt.Sprintf("%s %d - %d %s @ %s", homeTeam, homeGoal, awayGoal, awayTeam, venue)
+		hasil := fmt.Sprintf(" %s %d - %d %s @ %s", homeTeam, homeGoal, awayGoal, awayTeam, venue)
 		historyPertandingan = append(historyPertandingan, hasil)
+
+		if homeGoal > awayGoal {
+			fmt.Println("Pemenang :", homeTeam)
+			klasemen[homeTeam] += 3
+			klasemen[awayTeam] += 0
+		}else if awayGoal > homeGoal{
+			fmt.Println("Pemenang :", awayTeam)
+			klasemen[awayTeam] += 3
+			klasemen[homeTeam] += 0
+		}else{
+			fmt.Println("Hasil : Seri")
+			klasemen[awayTeam] += 1
+			klasemen[homeTeam] += 1
+			jumlahSeri++
+		}
 
 		if homeGoal > awayGoal {
 
@@ -114,7 +131,13 @@ func main() {
 	fmt.Printf("Rata-rata Gol       : %.2f\n", rataRataGol)
 
 	for i, history := range historyPertandingan{
-		fmt.Print("%s %d \n", i+1, history)
+		fmt.Print( i+1 , history, "\n")
 
 	}
+
+	fmt.Println("\n --- Klasemen Akhir Tim --- ")
+	for tim, poin := range klasemen{
+		fmt.Printf("- %-12s: %d Poin \n", tim, poin)
+	}
+
 }
